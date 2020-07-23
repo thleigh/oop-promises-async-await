@@ -2,108 +2,108 @@
 
 //Prototypal Inheritance
 
-const dog = {
-    name: 'Michael',
-    goodBoy: true,
-    gender: 'girl'
-};
+// const dog = {
+//     name: 'Michael',
+//     goodBoy: true,
+//     gender: 'girl'
+// };
 
-console.log(dog);
+// console.log(dog);
 
-const dogTwo = {
-    name: 'Rocco',
-}
+// const dogTwo = {
+//     name: 'Rocco',
+// }
 
-dogTwo.__proto__ = dog;
+// dogTwo.__proto__ = dog;
 
-console.log(dogTwo.goodBoy);
-console.log(dogTwo.name);
+// console.log(dogTwo.goodBoy);
+// console.log(dogTwo.name);
 
-//Make tow objects need to inherit from the object. 
+// //Make tow objects need to inherit from the object. 
 
-const tanner = {
-    name: 'Tanner',
-    goodBoy: true,
-    gender: 'boy',
-    favoriteSport: 'soccer'
-}
+// const tanner = {
+//     name: 'Tanner',
+//     goodBoy: true,
+//     gender: 'boy',
+//     favoriteSport: 'soccer'
+// }
 
-const rome = {
-    name: 'Rome',
-    goodBoy: true,
-    job: 'GA instructor'
-}
+// const rome = {
+//     name: 'Rome',
+//     goodBoy: true,
+//     job: 'GA instructor'
+// }
 
-rome.__proto__ = tanner;
+// rome.__proto__ = tanner;
 
-console.log(rome.favoriteSport);
+// console.log(rome.favoriteSport);
 
 
-//Constructor Functions (constructor functions are always capitalized)
-function User(name) {
-    this.name = name;
+// //Constructor Functions (constructor functions are always capitalized)
+// function User(name) {
+//     this.name = name;
 
-    //return this
+//     //return this
 
-}
+// }
 
-let adam = new User('Adam');
-let pete = new User('Pete');
+// let adam = new User('Adam');
+// let pete = new User('Pete');
 
-console.log(adam.name);
-console.log(pete.name);
+// console.log(adam.name);
+// console.log(pete.name);
 
-function NBAPlayer(name, team, threePointShooter) {
-    this.name = name;
-    this.team = name;
-    this.threePointShooter = threePointShooter;
-    this.intro = function() {
-        console.log('Hi, my name is ' + this.name);
-    }
-}
+// function NBAPlayer(name, team, threePointShooter) {
+//     this.name = name;
+//     this.team = name;
+//     this.threePointShooter = threePointShooter;
+//     this.intro = function() {
+//         console.log('Hi, my name is ' + this.name);
+//     }
+// }
 
-let steph = new NBAPlayer('Steph Curry', 'Warriors', true);
-console.log(steph);
-console.log(steph.name);
-steph.intro();
+// let steph = new NBAPlayer('Steph Curry', 'Warriors', true);
+// console.log(steph);
+// console.log(steph.name);
+// steph.intro();
 
-//make a constructor function
-//make 3 new variables with that constructor function
+// //make a constructor function
+// //make 3 new variables with that constructor function
 
-function Spurs(name, number, position) {
-    this.name = name;
-    this.number = number;
-    this.position = position;
-}
+// function Spurs(name, number, position) {
+//     this.name = name;
+//     this.number = number;
+//     this.position = position;
+// }
 
-let son = new Spurs('Heung-min Son', '7', 'Winger');
-let kane = new Spurs('Harry Kane', '10', 'Striker');
+// let son = new Spurs('Heung-min Son', '7', 'Winger');
+// let kane = new Spurs('Harry Kane', '10', 'Striker');
 
-console.log(son);
-console.log(kane);
+// console.log(son);
+// console.log(kane);
 
-//Class
+// //Class
 
-class Car {
-    constructor(year, make, model, color) {
-        this.year = year;
-        this.make = make;
-        this.model = model;
-        this.color = color;
-    }
-    drive() {
-        console.log('Vroom');
-    }
-    intro() {
-        console.log('This car is a ' + this.make + ' ' + this.model);
-    }
-}
+// class Car {
+//     constructor(year, make, model, color) {
+//         this.year = year;
+//         this.make = make;
+//         this.model = model;
+//         this.color = color;
+//     }
+//     drive() {
+//         console.log('Vroom');
+//     }
+//     intro() {
+//         console.log('This car is a ' + this.make + ' ' + this.model);
+//     }
+// }
 
-let tesla = new Car('2020', 'Tesla', 'Model X', 'red');
-console.log(tesla);
+// let tesla = new Car('2020', 'Tesla', 'Model X', 'red');
+// console.log(tesla);
 
-tesla.drive();
-tesla.intro();
+// tesla.drive();
+// tesla.intro();
 
 
 class GithubProfile {
@@ -134,9 +134,34 @@ fetch('https://api.github.com/users/thleigh')
     tanner.intro();
 });
 
+//Async
+
+async function printUsers() {
+    const endpoint = 'https://api.github.com/users/thleigh';
+    let tanner = await fetch(endpoint).then(response => response.json());
+    console.log(tanner);
+  }
+  printUsers();
+
+//   fetch(endpoint)
+//   .then(response => {
+//       return response.json();
+//   })
+
+
+async function printFacebook() {
+    const endpoint = 'https://api.github.com/users/facebook';
+    let facebook = await fetch(endpoint).then(response => response.json())
+    console.log(facebook.login);
+}
+printFacebook();
+
+
+
+
 // ES5: Part 1
 
-let isMomHappy = true;
+// let isMomHappy = true;
 
 // Promise
 // let willIGetNewPhone = new Promise(
@@ -156,19 +181,20 @@ let isMomHappy = true;
 // );
 // console.log(willIGetNewPhone);
 
-let willIGetNewPhone = new Promise((resolve, reject) => {
-    if (isMomHappy) {
-        const phone = {
-            brand: 'iphone',
-            color: 'red'
-        }
-        resolve(phone);
-    }
-    else {
-        reject('No Phone');
-    }
-})
+// let willIGetNewPhone = new Promise((resolve, reject) => {
+//     if (isMomHappy) {
+//         const phone = {
+//             brand: 'iphone',
+//             color: 'red'
+//         }
+//         resolve(phone);
+//     }
+//     else {
+//         reject('No Phone');
+//     }
+// })
 
-willIGetNewPhone.then(result => {
-    console.log(result);
-});
+// willIGetNewPhone.then(result => {
+//     console.log(result);
+// });
+
