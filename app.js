@@ -133,3 +133,42 @@ fetch('https://api.github.com/users/thleigh')
 
     tanner.intro();
 });
+
+// ES5: Part 1
+
+let isMomHappy = true;
+
+// Promise
+// let willIGetNewPhone = new Promise(
+//     function (resolve, reject) {
+//         if (isMomHappy) {
+//             let phone = {
+//                 brand: 'Samsung',
+//                 color: 'black'
+//             };
+//             resolve(phone); // fulfilled
+//         } else {
+//             let reason = new Error('mom is not happy');
+//             reject(reason); // reject
+//         }
+
+//     }
+// );
+// console.log(willIGetNewPhone);
+
+let willIGetNewPhone = new Promise((resolve, reject) => {
+    if (isMomHappy) {
+        const phone = {
+            brand: 'iphone',
+            color: 'red'
+        }
+        resolve(phone);
+    }
+    else {
+        reject('No Phone');
+    }
+})
+
+willIGetNewPhone.then(result => {
+    console.log(result);
+});
